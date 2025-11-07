@@ -1,0 +1,87 @@
+/* style.css - aparência, fundo com imagem e acessibilidade */
+
+:root {
+  --primary: #0078d4;
+  --primary-dark: #005ea6;
+  --bg-overlay: rgba(0,0,0,0.35);
+  --container-bg: rgba(255,255,255,0.96);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  line-height: 1.4;
+}
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  background-image: url('img/congresso.jpg'); /* ajuste o nome/caminho conforme necessário */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 24px;
+  font-size: 16px;
+  color: #222;
+}
+
+/* overlay para legibilidade */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 40px auto;
+  background: var(--container-bg);
+  border-radius: 8px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+h2 { margin: 0 0 12px 0; font-size: 1.5rem; }
+h3 { margin: 10px 0; font-size: 1.125rem; }
+
+input, select, button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button.primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 11px 14px;
+  font-weight: 600;
+}
+button.primary:hover { background: var(--primary-dark); }
+
+.hidden { display: none; }
+
+.small { font-size: 0.9rem; margin-top: 8px; }
+.small a { color: var(--primary); text-decoration: none; }
+.small a:hover { text-decoration: underline; }
+
+/* mensagens e acessibilidade */
+.msg { margin-top: 6px; min-height: 1.25em; color: #b33; font-weight: 600; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* resumo */
+#resumo p { margin: 8px 0; }
+.help { margin-top: 12px; font-size: 0.95rem; }
+.help a { color: var(--primary); text-decoration: none; }
+.help a:hover { text-decoration: underline; }
