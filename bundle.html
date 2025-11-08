@@ -90,7 +90,10 @@ button.primary:hover { background: var(--primary-dark); }
 .help { margin-top: 12px; font-size: 0.95rem; }
 .help a { color: var(--primary); text-decoration: none; }
 .help a:hover { text-decoration: underline; }
+
+.form-group { margin-top: 10px; }
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 body {
@@ -104,9 +107,9 @@ body {
   font-size: 16px;
   color: #222;
 }
-    <button id="btnEntrar" class="primary">Entrar</button>
+    <button id="btnEntrarTop" class="primary">Entrar</button>
     <div id="msgLogin" class="msg" aria-live="polite"></div>
-    <p class="small">Não tem conta? <a href="#" id="linkCadastro">Criar conta</a></p>
+    <p class="small">Não tem conta? <a href="#">Criar conta</a></p>
   </div>
 
   <!-- Tela de Cadastro -->
@@ -138,8 +141,6 @@ body {
     <html lang="pt-BR">
 
     <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" />
       <title>Engenharia de Usabilidade — Bundle</title>
       <style>
         :root{--primary:#0078d4;--primary-dark:#005ea6;--bg-overlay:rgba(0,0,0,0.35);--container-bg:rgba(255,255,255,0.98);}
@@ -159,6 +160,7 @@ body {
         .small a{color:var(--primary);text-decoration:none}
         .msg{margin-top:6px;min-height:1.25em;color:#b33;font-weight:600}
         #resumo p{margin:8px 0}
+        .mt-10 { margin-top: 10px; }
       </style>
     </head>
 
@@ -172,18 +174,18 @@ body {
           </div>
         </header>
 
-        <!-- Login -->
         <div id="loginForm">
           <h2>Entrar</h2>
           <div class="row">
             <input id="loginUsuario" placeholder="Usuário" />
-            <input id="loginSenha" type="password" placeholder="Senha" />
+          <div class="form-group">
           </div>
-          <div style="margin-top:10px">
+          <div class="mt-10">
             <button id="btnEntrar" class="primary">Entrar</button>
             <div id="msgLogin" class="msg" aria-live="polite"></div>
             <p class="small">Não tem conta? <a href="#" id="linkCadastro">Criar conta</a></p>
           </div>
+        </div>
         </div>
 
         <!-- Cadastro -->
@@ -192,11 +194,11 @@ body {
           <div class="row">
             <input id="usuario" placeholder="Usuário" />
             <input id="senha" type="password" placeholder="Senha" />
-          </div>
-          <div style="margin-top:10px">
+          <div class="mt-10">
             <button id="btnCadastrar" class="primary">Cadastrar</button>
             <div id="msgCadastro" class="msg" aria-live="polite"></div>
             <p class="small"><a href="#" id="linkVoltarLogin">Voltar ao login</a></p>
+          </div>
           </div>
         </div>
 
@@ -215,7 +217,7 @@ body {
             <input id="email" type="email" placeholder="E-mail" />
             <select id="cargo"><option value="">Selecione o cargo</option><option>Gerente</option><option>Administrativo</option><option>Colaborador</option></select>
           </div>
-          <div style="margin-top:10px">
+          <div class="mt-10">
             <button id="btnSalvarDados" class="primary">Salvar Dados</button>
             <div id="msgDados" class="msg" aria-live="polite"></div>
           </div>
@@ -284,7 +286,10 @@ tuUOcj+b+9Tf+BVNsqPZRylDcN/fpr7v71O+WjZU2J5pEPzf3qPm/vVJso2UckQ5pEOG/v0Pu/v0
       const setMsg = (el, text, isError = true) => { if(!el) return; el.textContent = text||''; el.style.color = isError? '#b33':'#0a7a2a'; };
 
       document.addEventListener('DOMContentLoaded', () => {
-        if(btnEntrar) btnEntrar.addEventListener('click', login);
+        const btnEntrarTop = document.getElementById('btnEntrarTop');
+        const btnEntrarMain = document.getElementById('btnEntrarMain');
+        if(btnEntrarTop) btnEntrarTop.addEventListener('click', login);
+        if(btnEntrarMain) btnEntrarMain.addEventListener('click', login);
         if(btnCadastrar) btnCadastrar.addEventListener('click', cadastrar);
         if(btnSalvarDados) btnSalvarDados.addEventListener('click', salvarDados);
         if(linkCadastro) linkCadastro.addEventListener('click', e => { e.preventDefault(); showCadastro(); });
