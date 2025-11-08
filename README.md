@@ -1,3 +1,4 @@
+## Pessoal è um App Zip para sewr mais seguro blz
 Engenharia de Usabilidade — pacote para distribuição
 
 Este diretório contém uma versão otimizada do projeto para distribuição (ZIP e diretório `dist/`).
